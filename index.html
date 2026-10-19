@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proiezioni di vita</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📈</text></svg>" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">📈 <strong>Proiezioni</strong><span>di vita</span></div>
+      <div class="plans">
+        <select id="plan-select" aria-label="Piano"></select>
+        <button data-plan="new" title="Nuovo piano">＋ Nuovo</button>
+        <button data-plan="dup" title="Duplica il piano per confrontare scenari">Duplica</button>
+        <button data-plan="rename">Rinomina</button>
+        <button data-plan="delete">Elimina</button>
+        <button data-plan="export" title="Scarica il piano come JSON">Esporta</button>
+        <label class="btn" title="Carica un piano da JSON">Importa<input type="file" id="import" accept="application/json" hidden /></label>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside id="editor" aria-label="Dati del piano"></aside>
+
+      <main>
+        <section class="kpis" id="kpis"></section>
+
+        <section class="card chart-card">
+          <div class="chart-toolbar">
+            <div class="tabs" role="tablist">
+              <button data-mode="networth">Patrimonio</button>
+              <button data-mode="cashflow">Flusso di cassa</button>
+              <button data-mode="montecarlo">Monte Carlo</button>
+              <button data-mode="compare">Confronta piani</button>
+            </div>
+            <label class="check"><input type="checkbox" id="real" /> Euro di oggi</label>
+          </div>
+          <div class="chart-wrap"><canvas id="chart"></canvas></div>
+          <p class="hint" id="chart-hint"></p>
+        </section>
+
+        <div class="lower">
+          <section class="card">
+            <h2>Traguardi</h2>
+            <ol class="milestones" id="milestones"></ol>
+          </section>
+          <section class="card" id="detail"></section>
+        </div>
+
+        <details class="card table-card">
+          <summary>Tabella anno per anno</summary>
+          <div class="table-scroll" id="table"></div>
+        </details>
+      </main>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
